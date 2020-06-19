@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
 import Store from './store';
 import { Provider } from 'react-redux';
 import AppRouter from './routes/AppRouter';
+import './styles/Main.scss';
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
