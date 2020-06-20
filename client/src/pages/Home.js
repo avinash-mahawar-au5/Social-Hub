@@ -8,33 +8,42 @@ import { signIn } from '../actions/app';
 import { signUp } from '../actions/app';
 
 class Home extends Component {
-	state = {
-		signMode: 'menu',
-		phrases: [
-			{
-				extra: "William Shakespeare - All's Well That Ends Well",
-				quote: 'What is a friend?\nA single soul dwelling in two bodies.',
-			},
-			{
-				extra: 'Aristotle',
-				quote: 'Love all, trust a few, do wrong to none.',
-			},
-			{
-				extra: 'Marcus Aurelius - Meditations',
-				quote: 'The soul becomes dyed\nwith the colour of its thoughts.',
-			},
-			{
-				extra: 'Marcus Aurelius - Meditations',
-				quote:
-					'The happiness of your life depends\nupon the quality of your thoughts.',
-			},
-			{
-				extra: 'Marcus Aurelius - Meditations',
-				quote: 'The best revenge is to be\nunlike him who performed the injury',
-			},
-		],
-		selectedPhrase: {},
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			signMode: 'menu',
+			phrases: [
+				{
+					extra: "William Shakespeare - All's Well That Ends Well",
+					quote: 'What is a friend?\nA single soul dwelling in two bodies.',
+				},
+				{
+					extra: 'Aristotle',
+					quote: 'Love all, trust a few, do wrong to none.',
+				},
+				{
+					extra: 'Marcus Aurelius - Meditations',
+					quote: 'The soul becomes dyed\nwith the colour of its thoughts.',
+				},
+				{
+					extra: 'Marcus Aurelius - Meditations',
+					quote:
+						'The happiness of your life depends\nupon the quality of your thoughts.',
+				},
+				{
+					extra: 'Marcus Aurelius - Meditations',
+					quote:
+						'The best revenge is to be\nunlike him who performed the injury',
+				},
+			],
+			selectedPhrase: {},
+		};
+
+		this.getAuthComponent = this.getAuthComponent.bind(this);
+		this.setMenuMode = this.setMenuMode.bind(this);
+		this.setLoginMode = this.setLoginMode.bind(this);
+		this.setSignupMode = this.setSignupMode.bind(this);
+	}
 
 	componentDidMount() {
 		if (this.props.isLogged) this.props.history.push(`/u/${this.props.user}`);
@@ -46,17 +55,45 @@ class Home extends Component {
 	}
 
 	componentDidUpdate() {
-		if (this.props.isLogged) this.props.history.push(`/u/${thos.props.userr}`);
+		if (this.props.isLogged) this.props.history.push(`/u/${this.props.user}`);
 	}
 
 	setLoginMode() {
 		this.setState(() => ({ signMode: 'login' }));
 	}
-	setSignupMode(){
-		this.setState(()=>({signMode:'signup'}))
+	setSignupMode() {
+		this.setState(() => ({ signMode: 'signup' }));
 	}
 
+	setMenuMode() {
+		this.setState(() => ({ signMode: 'menu' }));
+	}
 
+	getAuthComponent() {
+		const signMode = this.state.signMode;
+
+		switch (signMode) {
+			case 'signup':
+				return (
+					<AuthForm
+						type='signup'
+						backMethod={this.setMenuMode}
+						onSuccess={this.props.signUp}
+					/>
+				);
+
+			case 'login':
+				return (
+					<AuthForm
+						type='login'
+						backMethod={this.setMenuMode}
+						onSuccess={this.props.signIn}
+					/>
+				);
+			default:
+				alert('Please Select Anything');
+		}
+	}
 	render() {
 		return (
 			<div className='home'>
@@ -74,14 +111,18 @@ class Home extends Component {
 					<div className='col-12 col-md-4 bg-white home__right d-flex flex-column justify-content-center'>
 						<div className='row justify-content-center'>
 							<div className='col-6'>
-								<img src={Logo} className='mx-auto d-block img-fluid' />
+								<img
+									src={Logo}
+									className='mx-auto d-block img-fluid'
+									alt='Company Logo'
+								/>
 							</div>
 						</div>
 						<div className='row pr-md-3'>
 							<div className='col-12 px-4'>
 								<div className='card border-0 rounded-0'>
 									<div className='card-body'>
-										{this.state.signMode == 'menu' && (
+										{this.state.signMode === 'menu' && (
 											<div>
 												<button
 													className='btn btn-outline-brand btn-block rounded-pill'
@@ -97,11 +138,11 @@ class Home extends Component {
 												<Link
 													to='/explore'
 													className='btn btn-brand-secondary btn-block text-white rounded-pill'>
-													I'd like to explore first 🧭
+													I'd like to explore first 🧭{' '}
 												</Link>
 											</div>
 										)}
-										{this.state.signMode != 'menu' && (
+										{this.state.signMode !== 'menu' && (
 											<>{this.getAuthComponent()}</>
 										)}
 									</div>

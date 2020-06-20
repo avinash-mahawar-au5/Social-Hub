@@ -30,7 +30,7 @@ export const setLoginLoad = (value) => {
 		});
 };
 
-export const setSettingLoad = (value) => {
+export const setSettingsLoad = (value) => {
 	return (dispatch) =>
 		dispatch({
 			type: SET_SETTINGS_LOADING,
