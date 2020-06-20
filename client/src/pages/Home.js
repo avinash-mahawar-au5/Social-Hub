@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import AuthForm from '../components/AuthForm';
 import Logo from '../assets/images/logo.jpg';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { toggleNavbar } from '../actions/app';
+import { signIn } from '../actions/app';
+import { signUp } from '../actions/app';
 
 class Home extends Component {
 	state = {
@@ -32,6 +35,27 @@ class Home extends Component {
 		],
 		selectedPhrase: {},
 	};
+
+	componentDidMount() {
+		if (this.props.isLogged) this.props.history.push(`/u/${this.props.user}`);
+
+		const randomNumber = Math.floor(Math.random() * this.state.phrases.length);
+		this.setState(() => ({
+			selectedPhrase: this.state.phrases[randomNumber],
+		}));
+	}
+
+	componentDidUpdate() {
+		if (this.props.isLogged) this.props.history.push(`/u/${thos.props.userr}`);
+	}
+
+	setLoginMode() {
+		this.setState(() => ({ signMode: 'login' }));
+	}
+	setSignupMode(){
+		this.setState(()=>({signMode:'signup'}))
+	}
+
 
 	render() {
 		return (
@@ -96,6 +120,10 @@ const stateToProps = (state) => ({
 	user: state.app.logged.username,
 });
 
-const dispatchToProps = (dispatch) => ({});
+const dispatchToProps = (dispatch) => ({
+	toggleNavbar: (value) => dispatch(toggleNavbar(value)),
+	signIn: (value) => dispatch(signIn(value)),
+	signUp: (value) => dispatch(signUp(value)),
+});
 
 export default connect(stateToProps, dispatchToProps)(Home);

@@ -3,8 +3,8 @@
 }
 
 $theme-colors: (
-	'brand': #ee5e47,
-	'brand-secondary': #ffdc7c,
+	'brand':rgb(143, 130, 95),
+	'brand-secondary': #caa84ac2,
 );
 
 @import 'node_modules/bootstrap/scss/bootstrap';
@@ -22,9 +22,8 @@ $theme-colors: (
 body {
 	margin: 0 !important;
 	padding: 0 !important;
-	background-color: #b12929;
+	background-color: white;
 	overflow-x: hidden;
-	
 }
 
 .ws-pre-line {
