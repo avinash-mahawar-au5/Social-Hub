@@ -99,11 +99,11 @@ class Home extends Component {
 			<div className='home'>
 				<div className='row h-100'>
 					<div className='col-8 d-none d-md-flex flex-column justify-content-end pl-5 home__left'>
-						<h1 className='display-7 text-light home__left__text'>
+						<h1 className='display-7 text-dark home__left__text'>
 							{this.state.selectedPhrase.quote}
 						</h1>
 						{!!this.state.selectedPhrase.extra && (
-							<p className='text-light lead home__left__text'>
+							<p className='text-dark lead home__left__text'>
 								{this.state.selectedPhrase.extra}
 							</p>
 						)}
@@ -138,7 +138,7 @@ class Home extends Component {
 												<Link
 													to='/explore'
 													className='btn btn-brand-secondary btn-block text-white rounded-pill'>
-													I'd like to explore first 🧭{' '}
+													Want to Explore ?? 🧭{' '} Click Here!!
 												</Link>
 											</div>
 										)}
