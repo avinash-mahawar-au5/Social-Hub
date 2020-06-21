@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,SAAS,CAAA;EACL,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;CAKhB;;AAHI,AAAD,iBAAS,CAAA;EACL,gBAAgB,EAAE,OAAO;CAC5B",
-    "sources": [
-        "ProfilePictureModal.scss"
-    ],
-    "names": [],
-    "file": "ProfilePictureModal.css"
-}

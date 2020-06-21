@@ -25,8 +25,68 @@ import cogoToast from 'cogo-toast';
 class Profile extends Component {
 	constructor(props) {
 		super(props);
+
+		this.openProfilePictureModal = this.openProfilePictureModal.bind(this);
+		this.updateDescription = this.updateDescription.bind(this);
+	}
+	componentDidMount() {
+		this.initializeProfile();
 	}
 
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		if (this.props.location !== prevProps.location) {
+			this.props.restartState();
+			this.props.restartStatePosts();
+			this.initializeProfile();
+		}
+	}
+
+	componentWillUnmount() {
+		this.props.restartState();
+		this.props.restartStatePosts();
+	}
+
+	fetchUserPosts() {
+		const profileId = this.props.match.params.id;
+
+		this.props.fetchUserPosts(profileId);
+	}
+
+	initializeProfile() {
+		this.props.fetchProfile(this.props.match.params.id);
+		this.fetchUserPosts();
+	}
+
+	openProfilePictureModal() {
+		if (this.props.ownsProfile) {
+			this.props.toggleProfilePictureModal();
+		}
+	}
+
+	updateDescription(e) {
+		e.preventDefault();
+		const description = e.target.description.value;
+
+		if (this.props.profile.description == description) {
+			cogoToast.warn(
+				<p>
+					Ehm... i don't wanna be the one to tell you what to do but...{' '}
+					<strong>descriptions are the same 🙊</strong>
+				</p>,
+				{
+					position: 'bottom-right',
+				}
+			);
+		} else if (description.length > 150) {
+			cogoToast.warn("Descriptions shouldn't be longer than 150 characters", {
+				position: 'bottom-right',
+			});
+		} else {
+			Promise.resolve(this.props.changeDescription(description)).then(() =>
+				this.props.toggleEditingDescription()
+			);
+		}
+	}
 	render() {
 		return (
 			<div className='d-flex flex-column flex-md-row profile w-100'>
