@@ -18,7 +18,7 @@ export const fetchUserPosts = (usernamePosts) => {
 	return (dispatch, getState) => {
 		const state = getState();
 		const { offset, quantity, isThereMore, loading } = state.posts;
-		const { username } = state.fa - app - store.logged;
+		const { username } = state.app.logged;
 
 		if (isThereMore && !loading) {
 			dispatch(setLoading(true));

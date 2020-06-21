@@ -5,6 +5,7 @@ import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
 import cogoToast from 'cogo-toast';
 import { connect } from 'react-redux';
+import { changeImage } from '../actions/settings';
 import { toggleProfilePictureModal } from '../actions/app';
 class ProfilePictureModal extends Component {
 	constructor(props) {
@@ -16,9 +17,31 @@ class ProfilePictureModal extends Component {
 
 		this.cropper = React.createRef();
 
-		this.onFileSelected = this.onFileSelected.bind(this);
+		// this.onFileSelected = this.onFileSelected.bind(this);
+	}
+	componentWillUnmount() {
+		this.setState(() => ({
+			file: null,
+		}));
 	}
 
+	onFileSelected(File) {
+		this.setState(() => ({
+			file: File[0],
+		}));
+	}
+
+	onFileError(error) {
+		cogoToast.info(`Whoops, there war aproblem with the image.`, {
+			position: 'bottom-right',
+		});
+	}
+
+	uploadPicture() {
+		const crop = this.cropper.current.cropper.getData();
+
+		this.props.changeImage(this.state.file, crop);
+	}
 	render() {
 		const modalCustomStyles = {
 			height: 'fit-content',
@@ -98,5 +121,3 @@ const dispatchToProps = (dispatch) => ({
 });
 
 export default connect(stateToProps, dispatchToProps)(ProfilePictureModal);
-
-
