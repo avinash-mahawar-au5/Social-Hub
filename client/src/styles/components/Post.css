@@ -1,0 +1,45 @@
+.post {
+  border-color: rgba(0, 0, 0, 0);
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+  -webkit-box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.post__avatar {
+  max-width: 25px;
+}
+
+.post__likes {
+  color: red;
+  position: absolute;
+  bottom: -15px;
+  right: 10px;
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+  -webkit-box-shadow: 0px 0px 20px -9px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 20px -9px rgba(0, 0, 0, 0.2);
+}
+
+.post__delete {
+  position: absolute;
+  bottom: -15px;
+  right: 90px;
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+  -webkit-box-shadow: 0px 0px 20px -9px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 20px -9px rgba(0, 0, 0, 0.2);
+}
+
+.post__likes, .post__delete {
+  background-color: white;
+}
+
+.post:hover {
+  -webkit-box-shadow: 0px 8px 27px -7px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 27px -7px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
+/*# sourceMappingURL=Post.css.map */
