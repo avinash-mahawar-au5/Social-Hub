@@ -5,11 +5,10 @@ const { SECRET_KEY } = require("../config");
 const User = require("../models/User");
 const router = express.Router();
 
-router.post("/sign-up", (req, res) => {
+router.post("/sign-up", async (req, res) => {
   const { username, password } = req.body;
 
-  if (!username || !password)
-    res.status(400).send("You must provide all the informations");
+ 
 
   User.findOne({ username })
     .then((user) => {
@@ -44,9 +43,28 @@ router.post("/sign-up", (req, res) => {
             },
           });
         })
-        .catch((e) => res.send(500).json({ error: "There were an error." }));
+        .catch((e) =>
+          res.sendStatus(500).json({ error: "There were an error." })
+        );
     })
     .catch((e) => res.status(500).send("There were an error"));
+
+  // let found = await User.findOne({ username });
+  // if (found)
+  //   res.status(403).json({ code: 403, response: "User already registered" });
+
+  // let salt = await bcrypt.genSalt(5);
+  // const hashed = await bcrypt.hash(password, salt);
+  // password = hashed;
+
+  // let user = await User({ username, password });
+  // try {
+  //   let userSaved = await user.save();
+  //   res.status(200).json({
+  //     code: 200,
+  //     response: { token, user },
+  //   });
+  // } catch (error) {}
 });
 
 router.post("/sign-in", (req, res) => {

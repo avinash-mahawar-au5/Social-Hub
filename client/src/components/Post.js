@@ -6,7 +6,7 @@ import { likePost, unlikePost, deletePost } from "../actions/posts";
 import { Link, withRouter } from "react-router-dom";
 import Linkify from "react-linkify";
 import cogoToast from "cogo-toast";
-import Youtube from "react-youtube";
+import YouTube from "react-youtube";
 
 class Post extends Component {
   constructor(props) {
@@ -26,8 +26,10 @@ class Post extends Component {
 
   canDeleteIt() {
     if (this.props.session._id && this.props.author._id) {
+      // If i own the post.
       return this.props.session._id == this.props.author._id;
     } else if (this.props.session.username && this.props.match.params.id) {
+      // If the post is in my profile, even if i don't own it.
       return this.props.session.username == this.props.match.params.id;
     }
   }
@@ -39,16 +41,18 @@ class Post extends Component {
 
   handleLike() {
     if (!this.props.logged) {
-      return cogoToast.warn(`You must be loggen in to perform this action`, {
+      return cogoToast.warn(`You must be logged in to perform this action 😢`, {
         position: "bottom-right",
       });
     }
+
     if (this.props.liked) {
       this.props.unlikePost(this.props._id);
     } else {
       this.props.likePost(this.props._id);
     }
   }
+
   render() {
     return (
       <div className="card w-100 my-5 post">
@@ -80,7 +84,7 @@ class Post extends Component {
           </Linkify>
           {this.props.extra && (
             <div className="mt-3">
-              <Youtube
+              <YouTube
                 videoId={this.props.extra.value}
                 opts={{
                   width: "100%",
@@ -98,7 +102,7 @@ class Post extends Component {
               <i
                 className={`mr-1 ${
                   this.props.liked ? "fas fa-heart" : "far fa-heart"
-                }`}
+                  }`}
               ></i>
             </span>
           </div>

@@ -4,11 +4,12 @@ const User = require("../models/User");
 const Post = require("../models/Post");
 const { count } = require("../models/User");
 
-router.get("/users", (req, res) => {
+router.get("/users", async (req, res) => {
   User.countDocuments().exec((err, count) => {
     if (err)
       return res.status(500).send("There were an error counting the users");
 
+    // console.log(count);
     const random = Math.floor(Math.random() * (count - 10));
     User.find({})
       .limit(10)
@@ -25,14 +26,22 @@ router.get("/users", (req, res) => {
           response: [...result],
         });
       });
+    //   // res.send(data);
   });
+
+  // const data = await User.find({}).limit(10);
+
+  // res.status(200).json({
+  //   code: 200,
+  //   response: [...data],
+  // });
 });
 
 router.get("/posts", (req, res) => {
   Post.countDocuments().exec((err, count) => {
     if (err) return res.status(500).send("post Couldn't be counted");
-
-    const random = MATH.floor(Math.random() * (count - 10));
+    console.log(count);
+    const random = Math.floor(Math.random() * (count - 10));
     Post.find({})
       .limit(10)
       .skip(random)

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { discoverUsers, restartState } from '../actions/users';
+import { discoverUsers, restartState } from '../actions/discover';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
@@ -23,6 +23,7 @@ class DiscoverUser extends Component {
 	componentWillUnmount() {
 		this.props.restartState();
 	}
+
 	render() {
 		return (
 			<div className='card discover-user rounded-0 d-flex flex-grow-1'>
@@ -68,4 +69,5 @@ const dispatchToProps = (dispatch) => ({
 	discoverUsers: () => dispatch(discoverUsers()),
 	restartState: () => dispatch(restartState()),
 });
+
 export default connect(stateToProps, dispatchToProps)(withRouter(DiscoverUser));

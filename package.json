@@ -1,0 +1,23 @@
+{
+  "name": "meetandgreet",
+  "version": "1.0.0",
+  "description": "Social Media App Like facebook and Instagram",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avinash-mahawar-au5/Social-Hub.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avinash-mahawar-au5/Social-Hub/issues"
+  },
+  "homepage": "https://github.com/avinash-mahawar-au5/Social-Hub#readme",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}

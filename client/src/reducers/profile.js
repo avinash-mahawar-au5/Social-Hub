@@ -24,13 +24,11 @@ export default (state = defaultState, action) => {
         ...state,
         visibleSidenav: !state.visibleSidenav,
       };
-
     case TOGGLE_EDITING_DESCRIPTION:
       return {
         ...state,
         editingDescription: !state.editingDescription,
       };
-
     case FETCH_PROFILE:
       return {
         ...state,
@@ -54,8 +52,7 @@ export default (state = defaultState, action) => {
       };
     case RESTART_STATE:
       return defaultState;
-
     default:
-      state;
+      return state;
   }
 };

@@ -21,7 +21,8 @@ class NewPostForm extends Component {
 		this.getRandomQuote = this.getRandomQuote.bind(this);
 		this.toggleYoutubeInput = this.toggleYoutubeInput.bind(this);
 	}
-	componentWillUnmount() {}
+
+	componentWillUnmount() { }
 
 	componentDidMount() {
 		this.getRandomQuote();
@@ -116,4 +117,5 @@ const stateToProps = (state) => ({
 const dispatchToProps = (dispatch) => ({
 	newPost: (value) => dispatch(newPost(value)),
 });
+
 export default connect(stateToProps, dispatchToProps)(NewPostForm);

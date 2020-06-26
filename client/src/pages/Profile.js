@@ -1,26 +1,27 @@
 import React, { Component } from "react";
-import BottomScrollListener from "react-bottom-scroll-listener";
 import { changeDescription } from "../actions/settings";
 import { toggleNavbar, toggleProfilePictureModal } from "../actions/app";
 import {
   fetchProfile,
   restartState,
-  toggleEditingDescription,
   toggleSidenav,
+  toggleEditingDescription,
 } from "../actions/profile";
 import {
   fetchUserPosts,
   newPost,
   restartState as restartStatePosts,
 } from "../actions/posts";
+import BottomScrollListener from "react-bottom-scroll-listener";
+import { connect } from "react-redux";
 import Post from "../components/Post";
 import NewPostForm from "../components/NewPostForm";
-import ProfilePictuerModal from "../components/ProfilePictureModal";
+import ProfilePictureModal from "../components/ProfilePictureModal";
 import Loading from "../components/Loading";
-import Auth from "../components/Auth";
-import { logout } from "../actions/app";
-import { connect } from "react-redux";
 import cogoToast from "cogo-toast";
+
+import { logout } from "../actions/app";
+import Auth from "../components/Auth";
 
 class Profile extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class Profile extends Component {
     this.openProfilePictureModal = this.openProfilePictureModal.bind(this);
     this.updateDescription = this.updateDescription.bind(this);
   }
+
   componentDidMount() {
     this.initializeProfile();
   }
@@ -87,16 +89,16 @@ class Profile extends Component {
       );
     }
   }
+
   render() {
     return (
       <div className="d-flex flex-column flex-md-row profile w-100">
-        {this.props.ProfilePicModal && this.props.ownsProfile && (
-          <ProfilePictuerModal />
+        {this.props.profilePicModal && this.props.ownsProfile && (
+          <ProfilePictureModal />
         )}
-
         <div
           className={
-            "d-none d-md-flex sidenav flex-column" +
+            "d-none d-md-flex sidenav flex-column " +
             (!this.props.profile.visibleSidenav ? "sidenav--inactive" : "")
           }
         >
@@ -106,12 +108,11 @@ class Profile extends Component {
               className={
                 "sidenav__avatar mx-auto d-block mt-5 mb-2" +
                 (this.props.ownsProfile &&
-                  "sidenav__avatar--owner cursor-pointer")
+                  " sidenav__avatar--owner cursor-pointer")
               }
             >
               <img
                 src={this.props.profile.profilePic}
-                alt="profilePic"
                 className={
                   "sidenav__avatar__image img-fluid rounded-circle mx-auto d-block w-100 h-100"
                 }
@@ -149,11 +150,11 @@ class Profile extends Component {
                 </form>
               </div>
             ) : (
-              <p className="text-left text-white text-wrap description px-5 mb-0">
-                {this.props.profile.description ||
-                  "It seems this user hasn't provided a description 🥴!"}
-              </p>
-            )}
+                <p className="text-left text-white text-wrap description px-5 mb-0">
+                  {this.props.profile.description ||
+                    "It seems this user hasn't provided a description 🥴!"}
+                </p>
+              )}
             {this.props.ownsProfile && !this.props.profile.editingDescription && (
               <a
                 className="text-left btn-link text-brand-secondary btn px-5"
@@ -178,6 +179,7 @@ class Profile extends Component {
             </div>
           </div>
         </div>
+
         <BottomScrollListener
           onBottom={() => {
             this.setState(() => ({ ...this.state }));
@@ -199,11 +201,11 @@ class Profile extends Component {
                     </div>
                   </div>
                 ) : (
-                  <p className="mt-5">
-                    <i className="fas fa-lock"></i> This user doesn't allow
+                    <p className="mt-5">
+                      <i className="fas fa-lock"></i> This user doesn't allow
                     posts on his profile.
-                  </p>
-                )}
+                    </p>
+                  )}
               </Auth>
               <div className="profile__body__posts w-100">
                 <div className="d-flex flex-column">

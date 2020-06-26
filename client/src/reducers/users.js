@@ -14,16 +14,13 @@ export default (state = defaultState, action) => {
           profilePic: user.profilePic,
         })),
       };
-
     case SET_LOADING:
       return {
         ...state,
         loading: action.payload.loading,
       };
-
     case RESTART_STATE:
       return defaultState;
-
     default:
       return state;
   }

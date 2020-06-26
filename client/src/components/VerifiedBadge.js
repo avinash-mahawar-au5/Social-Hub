@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 import ReactTooltip from "react-tooltip";
 
 export default (props) => (
-  <Fragment>
+  <>
     <i
       className="far fa-check-circle mt-1 mx-1 text-danger"
-      data-tip="Varified"
+      data-tip="Verified"
     ></i>
     <ReactTooltip place="top" effect="solid" />
-  </Fragment>
+  </>
 );

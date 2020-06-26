@@ -79,7 +79,6 @@ export const toggleProfilePrivacy = () => {
 			});
 	};
 };
-
 export const reconnect = (last_session) => {
 	return (dispatch) => {
 		dispatch(setLoginLoad(true));

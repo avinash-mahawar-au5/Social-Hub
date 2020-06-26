@@ -2,7 +2,6 @@ import {
 	TOGGLE_NAVBAR,
 	TOGGLE_POST_MODAL,
 	TOGGLE_PROFILE_PICTURE_MODAL,
-	TOGGLE_SETTINGS_MODAL,
 	SET_LOGIN_LOADING,
 	SIGN_UP,
 	SIGN_IN,
@@ -11,23 +10,24 @@ import {
 	SET_PROFILE_PICTURE,
 	SET_PROFILE_DESCRIPTION,
 	SET_PROFILE_PRIVACY,
+	TOGGLE_SETTINGS_MODAL,
 	SET_SETTINGS_LOADING,
-	RESET_LAST_CONNECTION,
+	RESET_LAST_CONNECTION
 } from '../actions/app';
 
 const defaultState = {
 	profilePicModal: {
-		isVisible: false,
+		isVisible: false
 	},
 	postModal: {
-		isVisible: false,
+		isVisible: false
 	},
 	settingsModal: {
 		isVisible: false,
-		loading: false,
+		loading: false
 	},
 	navbar: {
-		isVisible: true,
+		isVisible: true
 	},
 	logged: {
 		isLoading: false,
@@ -37,8 +37,8 @@ const defaultState = {
 		profilePic: null,
 		description: null,
 		openProfile: null,
-		error: null,
-	},
+		error: null
+	}
 };
 
 export default (state = defaultState, action) => {
@@ -48,92 +48,83 @@ export default (state = defaultState, action) => {
 			return {
 				...state,
 				navbar: {
-					isVisible,
-				},
-			};
-
+					isVisible
+				}
+			}
 		case TOGGLE_SETTINGS_MODAL:
 			return {
 				...state,
 				settingsModal: {
 					...state.settingsModal,
-					isVisible: !state.settingsModal.isVisible,
-				},
-			};
-
+					isVisible: !state.settingsModal.isVisible
+				}
+			}
 		case TOGGLE_POST_MODAL:
 			return {
 				...state,
 				postModal: {
-					isVisible: !state.postModal.isVisible,
-				},
+					isVisible: !state.postModal.isVisible
+				}
 			};
-
 		case TOGGLE_PROFILE_PICTURE_MODAL:
 			return {
 				...state,
 				profilePicModal: {
-					isVisible: !state.profilePicModal.isVisible,
-				},
-			};
-
+					isVisible: !state.profilePicModal.isVisible
+				}
+			}
 		case SET_PROFILE_PRIVACY:
 			return {
 				...state,
 				logged: {
 					...state.logged,
-					openProfile: action.payload.openProfile,
-				},
-			};
+					openProfile: action.payload.openProfile
+				}
+			}
 		case SET_LOGIN_LOADING:
 			const { value: isLoading } = action.payload;
 			return {
 				...state,
 				logged: {
 					...state.logged,
-					isLoading,
-				},
-			};
+					isLoading
+				}
+			}
 		case SET_SETTINGS_LOADING:
 			return {
 				...state,
 				settingsModal: {
 					...state.settingsModal,
-					loading: action.payload.value,
-				},
-			};
+					loading: action.payload.value
+				}
+			}
 		case SET_PROFILE_PICTURE:
 			return {
 				...state,
 				logged: {
 					...state.logged,
-					profilePic: action.payload.url,
-				},
-			};
+					profilePic: action.payload.url
+				}
+			}
 		case SET_PROFILE_DESCRIPTION:
 			return {
 				...state,
 				logged: {
 					...state.logged,
-					description: action.payload.description,
-				},
-			};
-
+					description: action.payload.description
+				}
+			}
 		case SIGN_UP:
 		case SIGN_IN:
-			localStorage.setItem(
-				'last_session',
-				JSON.stringify({ ...action.payload })
-			);
+			localStorage.setItem('last_session', JSON.stringify({ ...action.payload }));
 			return {
 				...state,
 				logged: {
 					isLoading: false,
 					isLogged: true,
-					...action.payload,
-				},
-			};
-
+					...action.payload
+				}
+			}
 		case RECONNECT:
 			const { last_session } = action.payload;
 			return {
@@ -142,20 +133,18 @@ export default (state = defaultState, action) => {
 					...last_session,
 					isLoading: false,
 					isLogged: true,
-					profilePic: last_session.profilePic,
-				},
-			};
-
+					profilePic: last_session.profilePic
+				}
+			}
 		case RESET_LAST_CONNECTION:
 			localStorage.setItem('last_session', JSON.stringify({ ...state.logged }));
 			return state;
 		case LOGOUT:
 			return {
 				...state,
-				logged: defaultState.logged,
-			};
-
+				logged: defaultState.logged
+			}
 		default:
 			return state;
 	}
-};
+}

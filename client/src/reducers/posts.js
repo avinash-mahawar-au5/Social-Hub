@@ -37,7 +37,6 @@ export default (state = defaultState, action) => {
           })),
         ],
       };
-
     case DISCOVER_POSTS:
       return {
         ...state,
@@ -52,7 +51,6 @@ export default (state = defaultState, action) => {
           })),
         ],
       };
-
     case NEW_POST:
       return {
         ...state,
@@ -67,7 +65,6 @@ export default (state = defaultState, action) => {
           ...state.items,
         ],
       };
-
     case LIKE_POST:
       const { likedPost } = action.payload;
 
@@ -76,50 +73,46 @@ export default (state = defaultState, action) => {
         items: state.items.map((post) =>
           post._id == likedPost._id
             ? {
-                ...post,
-                likes: likedPost.likes,
-                likedBy: likedPost.likedBy,
-                liked: true,
-              }
+              ...post,
+              likes: likedPost.likes,
+              likedBy: likedPost.likedBy,
+              liked: true,
+            }
             : post
         ),
       };
-
     case UNLIKE_POST:
       const { unlikedPost } = action.payload;
+
       return {
         ...state,
         items: state.items.map((post) =>
           post._id == unlikedPost._id
             ? {
-                ...post,
-                likes: unlikedPost.likes,
-                likedBy: unlikedPost.likedBy,
-                liked: false,
-              }
+              ...post,
+              likes: unlikedPost.likes,
+              likedBy: unlikedPost.likedBy,
+              liked: false,
+            }
             : post
         ),
       };
-
     case DELETE_POST:
       return {
         ...state,
         items: state.items.filter(
-          (post) => post._id !== action.payload.deletedPost._id
+          (post) => post._id != action.payload.deletedPost._id
         ),
       };
-
     case SET_LOADING:
       return {
         ...state,
         loading: action.payload.loading,
       };
-
     case UPDATE_PROFILE_PICTURE:
       const username = action.payload.username;
-
       const items = state.items.map((post) => {
-        if (post.author.username === username) {
+        if (post.author.username == username) {
           return {
             ...post,
             author: {
@@ -136,7 +129,6 @@ export default (state = defaultState, action) => {
 
     case RESTART_STATE:
       return defaultState;
-
     default:
       return state;
   }

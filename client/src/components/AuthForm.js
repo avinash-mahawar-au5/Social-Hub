@@ -8,14 +8,12 @@ class AuthForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  //heree is the test comment
-
   handleSubmit(e) {
     e.preventDefault();
 
     const user = {
       username: e.target.username.value,
-      passwo55rd: e.target.password.value,
+      password: e.target.password.value,
     };
 
     this.props.onSuccess({ ...user });
