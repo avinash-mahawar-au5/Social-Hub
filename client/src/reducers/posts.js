@@ -9,7 +9,7 @@ import {
   UNLIKE_POST,
   UPDATE_PROFILE_PICTURE,
 } from "../actions/posts";
-import store from "../store";
+// import store from "../store";
 
 const defaultState = {
   loading: false,
@@ -71,13 +71,13 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         items: state.items.map((post) =>
-          post._id == likedPost._id
+          post._id === likedPost._id
             ? {
-              ...post,
-              likes: likedPost.likes,
-              likedBy: likedPost.likedBy,
-              liked: true,
-            }
+                ...post,
+                likes: likedPost.likes,
+                likedBy: likedPost.likedBy,
+                liked: true,
+              }
             : post
         ),
       };
@@ -87,13 +87,13 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         items: state.items.map((post) =>
-          post._id == unlikedPost._id
+          post._id === unlikedPost._id
             ? {
-              ...post,
-              likes: unlikedPost.likes,
-              likedBy: unlikedPost.likedBy,
-              liked: false,
-            }
+                ...post,
+                likes: unlikedPost.likes,
+                likedBy: unlikedPost.likedBy,
+                liked: false,
+              }
             : post
         ),
       };
@@ -101,7 +101,7 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         items: state.items.filter(
-          (post) => post._id != action.payload.deletedPost._id
+          (post) => post._id !== action.payload.deletedPost._id
         ),
       };
     case SET_LOADING:
@@ -112,7 +112,7 @@ export default (state = defaultState, action) => {
     case UPDATE_PROFILE_PICTURE:
       const username = action.payload.username;
       const items = state.items.map((post) => {
-        if (post.author.username == username) {
+        if (post.author.username === username) {
           return {
             ...post,
             author: {

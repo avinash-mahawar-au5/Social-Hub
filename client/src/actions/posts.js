@@ -1,18 +1,18 @@
-import axios from 'axios';
-import cogoToast from 'cogo-toast';
-import api from '../api/api';
+// import axios from 'axios';
+import cogoToast from "cogo-toast";
+import api from "../api/api";
 
 const API = new api();
 
-export const FETCH_USER_POSTS = '[POST] FETCH_USER_POSTS',
-  NEW_POST = '[POST] NEW_POST',
-  DISCOVER_POSTS = '[POST] DISCOVER_POSTS',
-  DELETE_POST = '[POST] DELETE_POST',
-  RESTART_STATE = '[POST] RESTART_STATE',
-  SET_LOADING = '[POST] SET_LOADING',
-  LIKE_POST = '[POST] LIKE_POST',
-  UNLIKE_POST = '[POST] UNLIKE_POST',
-  UPDATE_PROFILE_PICTURE = '[POST] UPDATE_PROFILE_PICTURE';
+export const FETCH_USER_POSTS = "[POST] FETCH_USER_POSTS",
+  NEW_POST = "[POST] NEW_POST",
+  DISCOVER_POSTS = "[POST] DISCOVER_POSTS",
+  DELETE_POST = "[POST] DELETE_POST",
+  RESTART_STATE = "[POST] RESTART_STATE",
+  SET_LOADING = "[POST] SET_LOADING",
+  LIKE_POST = "[POST] LIKE_POST",
+  UNLIKE_POST = "[POST] UNLIKE_POST",
+  UPDATE_PROFILE_PICTURE = "[POST] UPDATE_PROFILE_PICTURE";
 
 export const fetchUserPosts = (usernamePosts) => {
   return (dispatch, getState) => {
@@ -27,7 +27,7 @@ export const fetchUserPosts = (usernamePosts) => {
         `user/${usernamePosts}/posts?offset=${offset}&quantity=${quantity}`
       )
         .then((res) => {
-          if (res.code == 200)
+          if (res.code === 200)
             dispatch({
               type: FETCH_USER_POSTS,
               payload: res.response.map((post) => ({
@@ -40,7 +40,7 @@ export const fetchUserPosts = (usernamePosts) => {
         .then(() => dispatch(setLoading(false)));
     } else if (!loading) {
       cogoToast.info(`You have reached the bottom 😱!`, {
-        position: 'bottom-right',
+        position: "bottom-right",
       });
     }
   };
@@ -54,9 +54,9 @@ export const discoverPosts = (username) => {
 
     if (isThereMore && !loading) {
       dispatch(setLoading(true));
-      API.get('discover/posts')
+      API.get("discover/posts")
         .then((res) => {
-          if (res.code == 200)
+          if (res.code === 200)
             dispatch({
               type: DISCOVER_POSTS,
               payload: res.response.map((post) => ({
@@ -69,7 +69,7 @@ export const discoverPosts = (username) => {
         .then(() => dispatch(setLoading(false)));
     } else {
       cogoToast.info(`You have reached the bottom 😱!`, {
-        position: 'bottom-right',
+        position: "bottom-right",
       });
     }
   };
@@ -83,12 +83,12 @@ export const newPost = (data) => {
 
     API.post(`user/${username}/new/post`, { ...data })
       .then((res) => {
-        if (res.code == 200) {
+        if (res.code === 200) {
           cogoToast.success(`Post submitted`, {
-            position: 'bottom-right',
+            position: "bottom-right",
           });
 
-          if (username == profile) {
+          if (username === profile) {
             dispatch({
               type: NEW_POST,
               payload: {
@@ -100,7 +100,7 @@ export const newPost = (data) => {
       })
       .catch((e) => {
         cogoToast.error(`There were an error submitting your post.`, {
-          position: 'bottom-right',
+          position: "bottom-right",
         });
       });
   };
@@ -112,7 +112,7 @@ export const likePost = (postId) => {
 
     API.post(`post/${postId}/like`)
       .then((res) => {
-        if (res.code == 200)
+        if (res.code === 200)
           dispatch({
             type: LIKE_POST,
             payload: {
@@ -130,7 +130,7 @@ export const unlikePost = (postId) => {
 
     API.post(`post/${postId}/unlike`)
       .then((res) => {
-        if (res.code == 200)
+        if (res.code === 200)
           dispatch({
             type: UNLIKE_POST,
             payload: {
@@ -148,7 +148,7 @@ export const deletePost = (data) => {
     API.delete(`post/${postId}`)
       .then((res) => {
         cogoToast.warn(`Post deleted`, {
-          position: 'bottom-right',
+          position: "bottom-right",
         });
         dispatch({
           type: DELETE_POST,

@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Error extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="container mt-5 pt-5">
@@ -17,7 +13,7 @@ class Error extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

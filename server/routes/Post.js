@@ -37,12 +37,12 @@ router.delete("/:id", isAuth, (req, res) => {
 router.post("/:id/like", isAuth, (req, res) => {
   const { id } = req.params;
 
-  if (!res.user)
+  if (!req.user)
     res.status(403).json({ code: 403, response: "Unauthorized request" });
 
   const query = {
     _id: id,
-    likeBy: {
+    likedBy: {
       $nin: req.user.username,
     },
   };

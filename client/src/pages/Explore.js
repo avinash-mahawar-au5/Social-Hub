@@ -14,10 +14,6 @@ import Loading from "../components/Loading";
 import BottomScrollListener from "react-bottom-scroll-listener";
 
 class Explore extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.discoverPosts();
     this.props.discoverUsers();

@@ -27,10 +27,10 @@ class Post extends Component {
   canDeleteIt() {
     if (this.props.session._id && this.props.author._id) {
       // If i own the post.
-      return this.props.session._id == this.props.author._id;
+      return this.props.session._id === this.props.author._id;
     } else if (this.props.session.username && this.props.match.params.id) {
       // If the post is in my profile, even if i don't own it.
-      return this.props.session.username == this.props.match.params.id;
+      return this.props.session.username === this.props.match.params.id;
     }
   }
 
@@ -71,6 +71,7 @@ class Post extends Component {
             <div className="post__avatar ml-2">
               <Link to={"/u/" + this.props.author.username}>
                 <img
+                  alt=""
                   src={this.props.author.profilePic}
                   className="img-fluid cursor-pointer rounded-circle"
                 />
@@ -102,7 +103,7 @@ class Post extends Component {
               <i
                 className={`mr-1 ${
                   this.props.liked ? "fas fa-heart" : "far fa-heart"
-                  }`}
+                }`}
               ></i>
             </span>
           </div>

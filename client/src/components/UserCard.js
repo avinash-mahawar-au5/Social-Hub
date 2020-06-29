@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 class UserCard extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className={"user-card position-relative my-5 " + this.props.class}>
         <img
+          alt=""
           src={this.props.profilePic}
           className="rounded-circle user-card__image bg-brand"
         />

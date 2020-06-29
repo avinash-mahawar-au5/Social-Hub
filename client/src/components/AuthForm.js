@@ -51,7 +51,7 @@ class AuthForm extends Component {
               />
             </div>
             <button className="btn btn-brand text-light float-right border-0 rounded-pill">
-              {this.props.type == "signup" ? "Sign Up" : "Login"}
+              {this.props.type === "signup" ? "Sign Up" : "Login"}
             </button>
             {this.props.backMethod && (
               <button

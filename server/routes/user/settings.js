@@ -87,9 +87,20 @@ router.patch(
           .crop(x, y, width, height)
           .resize(150, 150)
           .quality(100)
-          .write(path.resolve(req.file.destination, req.file.filename)); // save
+          .write(path.resolve(req.file.destination, req.file.filename));
       }
     );
+
+    // Jimp.read(path.resolve(req.file.destination, req.file.filename))
+    //   .then((imageToCrop) => {
+    //     return imageToCrop
+    //       .resize(150, 150)
+    //       .quality(100)
+    //       .write(path.resolve(req.file.destination, req.file.filename));
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
 
     User.findByIdAndUpdate(
       _id,

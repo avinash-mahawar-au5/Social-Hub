@@ -69,11 +69,11 @@ class Profile extends Component {
     e.preventDefault();
     const description = e.target.description.value;
 
-    if (this.props.profile.description == description) {
+    if (this.props.profile.description === description) {
       cogoToast.warn(
         <p>
-          Ehm... i don't wanna be the one to tell you what to do but...{" "}
-          <strong>descriptions are the same 🙊</strong>
+          Write something about you!!
+          <strong>descriptions are the same</strong>
         </p>,
         {
           position: "bottom-right",
@@ -91,7 +91,9 @@ class Profile extends Component {
   }
 
   render() {
+    // console.log(this.props);
     return (
+      // <div></div>
       <div className="d-flex flex-column flex-md-row profile w-100">
         {this.props.profilePicModal && this.props.ownsProfile && (
           <ProfilePictureModal />
@@ -112,6 +114,7 @@ class Profile extends Component {
               }
             >
               <img
+                alt=""
                 src={this.props.profile.profilePic}
                 className={
                   "sidenav__avatar__image img-fluid rounded-circle mx-auto d-block w-100 h-100"
@@ -121,7 +124,7 @@ class Profile extends Component {
                 <i className="fas fa-camera"></i>
               </span>
             </div>
-            <p className="text-center text-white title mt-3">
+            <p className="text-center text-dark title mt-3">
               {this.props.profile.username}
             </p>
             {this.props.profile.editingDescription ? (
@@ -150,14 +153,14 @@ class Profile extends Component {
                 </form>
               </div>
             ) : (
-                <p className="text-left text-white text-wrap description px-5 mb-0">
-                  {this.props.profile.description ||
-                    "It seems this user hasn't provided a description 🥴!"}
-                </p>
-              )}
+              <p className="text-left text-white text-wrap description px-5 mb-0">
+                {this.props.profile.description ||
+                  "It seems this user hasn't provided a description 🥴!"}
+              </p>
+            )}
             {this.props.ownsProfile && !this.props.profile.editingDescription && (
               <a
-                className="text-left btn-link text-brand-secondary btn px-5"
+                className="text-left btn-link text-warning font-weight-bolder mt-3 btn px-5"
                 onClick={this.props.toggleEditingDescription}
               >
                 Edit description <i className="fas fa-pencil-alt"></i>
@@ -166,12 +169,12 @@ class Profile extends Component {
             <div className="d-flex flex-column justify-content-between h-100">
               <div className="d-flex justify-content-between px-5">
                 <div>
-                  <p className="text-white mb-0">
+                  <p className="text-primary font-weight-bolder mb-0 mt-3">
                     {this.props.profile.posts} Posts
                   </p>
                 </div>
                 <div>
-                  <p className="text-white mb-0">
+                  <p className="text-danger font-weight-bolder mb-0 mt-3">
                     {this.props.profile.likes} Likes
                   </p>
                 </div>
@@ -201,11 +204,11 @@ class Profile extends Component {
                     </div>
                   </div>
                 ) : (
-                    <p className="mt-5">
-                      <i className="fas fa-lock"></i> This user doesn't allow
+                  <p className="mt-5">
+                    <i className="fas fa-lock"></i> This user doesn't allow
                     posts on his profile.
-                    </p>
-                  )}
+                  </p>
+                )}
               </Auth>
               <div className="profile__body__posts w-100">
                 <div className="d-flex flex-column">
