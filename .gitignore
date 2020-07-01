@@ -3,6 +3,7 @@
 
 /server/node_modules
 /server/config.js
+/server/Procfile
 /node_modules
 
 /dist/css

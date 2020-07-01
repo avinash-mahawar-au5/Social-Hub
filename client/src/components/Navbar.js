@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { logout, togglePostModal, toggleSettingsModal } from "../actions/app";
 import { Link, NavLink } from "react-router-dom";
+import Logo from "../assets/images/logo1.png";
 import NewPostModal from "./NewPostModal";
+
 import Auth from "./Auth";
 
 class Navbar extends Component {
@@ -103,11 +105,7 @@ class Navbar extends Component {
               </Auth>
             </div>
             <div className="d-none d-md-block">
-              <img
-                alt=""
-                src="assets/images/small_logo.png"
-                className="d-block mx-auto img-fluid"
-              />
+              <img alt="" src={Logo} className="d-block mx-auto img-fluid" />
             </div>
           </div>
         )}

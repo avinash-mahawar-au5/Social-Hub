@@ -63,14 +63,14 @@ export const fetchProfile = (username) => {
 
     API.get(`user/${username}`)
       .then((res) => {
-        if (res.code === 200) console.log("res is", res);
-        dispatch({
-          type: FETCH_PROFILE,
-          payload: {
-            ...res.response,
-            ownProfile: state.app.logged.username === res.response.username,
-          },
-        });
+        if (res.code === 200)
+          dispatch({
+            type: FETCH_PROFILE,
+            payload: {
+              ...res.response,
+              ownProfile: state.app.logged.username === res.response.username,
+            },
+          });
       })
 
       .catch((e) => {

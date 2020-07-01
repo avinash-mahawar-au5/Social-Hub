@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Files from "react-files";
 import Rodal from "rodal";
-import {storage} from '../firebase'
+import { storage } from "../firebase";
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import cogoToast from "cogo-toast";
@@ -45,12 +45,12 @@ class ProfilePictureModal extends Component {
 
   uploadPicture() {
     const crop = this.cropper.current.cropper.getData();
+    // console.log("crop", crop);
 
     this.props.changeImage(this.state.file, crop);
   }
 
   render() {
-    console.log(this.state);
     const modalCustomStyles = {
       height: "fit-content",
       width: "fit-content",
