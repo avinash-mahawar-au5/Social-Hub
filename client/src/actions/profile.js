@@ -1,4 +1,4 @@
-// import axios from "axios";
+//import axios from 'axios';
 import cogoToast from "cogo-toast";
 import api from "../api/api";
 import { resetLastConnection } from "./app";
@@ -46,7 +46,6 @@ export const toggleEditingDescription = () => {
   };
 };
 export const updateProfilePicture = (url) => {
-  console.log(url);
   return (dispatch) => {
     dispatch({
       type: UPDATE_PROFILE_PICTURE,
@@ -63,16 +62,15 @@ export const fetchProfile = (username) => {
 
     API.get(`user/${username}`)
       .then((res) => {
-        if (res.code === 200)
+        if (res.code == 200)
           dispatch({
             type: FETCH_PROFILE,
             payload: {
               ...res.response,
-              ownProfile: state.app.logged.username === res.response.username,
+              ownProfile: state.app.logged.username == res.response.username,
             },
           });
       })
-
       .catch((e) => {
         switch (e.response.status) {
           case 404:

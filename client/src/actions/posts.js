@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from "axios";
 import cogoToast from "cogo-toast";
 import api from "../api/api";
 
@@ -27,7 +27,7 @@ export const fetchUserPosts = (usernamePosts) => {
         `user/${usernamePosts}/posts?offset=${offset}&quantity=${quantity}`
       )
         .then((res) => {
-          if (res.code === 200)
+          if (res.code == 200)
             dispatch({
               type: FETCH_USER_POSTS,
               payload: res.response.map((post) => ({
@@ -56,7 +56,7 @@ export const discoverPosts = (username) => {
       dispatch(setLoading(true));
       API.get("discover/posts")
         .then((res) => {
-          if (res.code === 200)
+          if (res.code == 200)
             dispatch({
               type: DISCOVER_POSTS,
               payload: res.response.map((post) => ({
@@ -83,12 +83,12 @@ export const newPost = (data) => {
 
     API.post(`user/${username}/new/post`, { ...data })
       .then((res) => {
-        if (res.code === 200) {
+        if (res.code == 200) {
           cogoToast.success(`Post submitted`, {
             position: "bottom-right",
           });
 
-          if (username === profile) {
+          if (username == profile) {
             dispatch({
               type: NEW_POST,
               payload: {
@@ -112,7 +112,7 @@ export const likePost = (postId) => {
 
     API.post(`post/${postId}/like`)
       .then((res) => {
-        if (res.code === 200)
+        if (res.code == 200)
           dispatch({
             type: LIKE_POST,
             payload: {
@@ -130,7 +130,7 @@ export const unlikePost = (postId) => {
 
     API.post(`post/${postId}/unlike`)
       .then((res) => {
-        if (res.code === 200)
+        if (res.code == 200)
           dispatch({
             type: UNLIKE_POST,
             payload: {

@@ -15,7 +15,7 @@ app.use(cors());
 app.use(methodOverride());
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(bodyParser.json());
 app.use("/", express.static(path.join(__dirname, "public")));
 

@@ -6,6 +6,7 @@ const Jimp = require("jimp");
 const multer = require("multer");
 const path = require("path");
 const shortId = require("shortid");
+const fs = require("fs");
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
@@ -78,6 +79,14 @@ router.patch(
       res.status(500).json({ code: 500, response: "There were an error" });
 
     const { x, y, width, height } = JSON.parse(req.body.crop);
+
+    // var img = fs.readFileSync(req.file.path);
+    // var encode_image = img.toString("base64");
+
+    // var finalImg = {
+    //   contentType: req.file.mimetype,
+    //   image: new Buffer(encode_image, "base64"),
+    // };
 
     Jimp.read(
       path.resolve(req.file.destination, req.file.filename),

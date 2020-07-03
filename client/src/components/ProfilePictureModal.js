@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Files from "react-files";
 import Rodal from "rodal";
-import { storage } from "../firebase";
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import cogoToast from "cogo-toast";
+import firebase from "firebase";
+import storage from "../firebase/index";
 import { connect } from "react-redux";
 import { changeImage } from "../actions/settings";
 import { toggleProfilePictureModal } from "../actions/app";
@@ -15,6 +16,7 @@ class ProfilePictureModal extends Component {
 
     this.state = {
       file: null,
+      // url: null,
     };
 
     this.cropper = React.createRef();
@@ -31,7 +33,6 @@ class ProfilePictureModal extends Component {
   }
 
   onFileSelected(File) {
-    // console.log(File);
     this.setState(() => ({
       file: File[0],
     }));
@@ -45,7 +46,36 @@ class ProfilePictureModal extends Component {
 
   uploadPicture() {
     const crop = this.cropper.current.cropper.getData();
-    // console.log("crop", crop);
+    // // console.log("crop", crop);
+
+    // this.props.changeImage(this.state.file, crop);
+
+    // const { file } = this.state;
+
+    // const uploadTask = storage.ref(`images/${file.name}`).put(file);
+    // uploadTask.onChange(
+    //   "state_changed",
+    //   (snapshot) => {
+    //     //progress function
+    //   },
+    //   (error) => {
+    //     //error function
+    //     console.log(error);
+    //   },
+    //   () => {
+    //     //complete function
+    //     storage
+    //       .ref("images")
+    //       .child(file.name)
+    //       .getDownloadURL()
+    //       .then((url) => {
+    //         console.log(url);
+    //         this.setState({
+    //           url: url,
+    //         });
+    //       });
+    //   }
+    // );
 
     this.props.changeImage(this.state.file, crop);
   }

@@ -41,7 +41,7 @@ router.get("/:username/posts", (req, res) => {
     .sort("-createdAt")
     .populate("author")
     .exec((err, posts) => {
-      if (err) return res.status(5000).send("There were an error");
+      if (err) return res.status(500).send("There were an error");
 
       res.status(200).json({
         code: 200,

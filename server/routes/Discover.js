@@ -4,7 +4,7 @@ const User = require("../models/User");
 const Post = require("../models/Post");
 const { count } = require("../models/User");
 
-router.get("/users", async (req, res) => {
+router.get("/users", (req, res) => {
   User.countDocuments().exec((err, count) => {
     if (err)
       return res.status(500).send("There were an error counting the users");
@@ -26,15 +26,7 @@ router.get("/users", async (req, res) => {
           response: [...result],
         });
       });
-    //   // res.send(data);
   });
-
-  // const data = await User.find({}).limit(10);
-
-  // res.status(200).json({
-  //   code: 200,
-  //   response: [...data],
-  // });
 });
 
 router.get("/posts", (req, res) => {
