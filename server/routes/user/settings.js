@@ -80,14 +80,6 @@ router.patch(
 
     const { x, y, width, height } = JSON.parse(req.body.crop);
 
-    // var img = fs.readFileSync(req.file.path);
-    // var encode_image = img.toString("base64");
-
-    // var finalImg = {
-    //   contentType: req.file.mimetype,
-    //   image: new Buffer(encode_image, "base64"),
-    // };
-
     Jimp.read(
       path.resolve(req.file.destination, req.file.filename),
       (err, imageToCrop) => {
@@ -100,16 +92,24 @@ router.patch(
       }
     );
 
-    // Jimp.read(path.resolve(req.file.destination, req.file.filename))
-    //   .then((imageToCrop) => {
-    //     return imageToCrop
-    //       .resize(150, 150)
-    //       .quality(100)
-    //       .write(path.resolve(req.file.destination, req.file.filename));
+    // const { body } = req;
+    // const image = body.image;
+    // User.findByIdAndUpdate(
+    //   _id,
+    //   { profilePic: image },
+    //   { new: true, useFindAndModify: false }
+    // )
+    //   .then((updatedUser) => {
+    //     res.status(200).json({
+    //       code: 200,
+    //       response: {
+    //         message: "Profile Pic updated Successfully",
+    //         path: `${updatedUser.profilePic}?hash=${shortId.generate()}`,
+    //         updatedUser,
+    //       },
+    //     });
     //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    //   .catch((e) => res.status(500).send("long Erroe", e));
 
     User.findByIdAndUpdate(
       _id,

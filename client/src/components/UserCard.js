@@ -11,9 +11,9 @@ class UserCard extends Component {
         />
         <div className="user-card__body">
           <div className="user-card__body__info d-flex justify-content-center d-md-block">
-            <h3 className="user-card__body__username montserrat">
+            <h5 className="user-card__body__username montserrat">
               {this.props.username}
-            </h3>
+            </h5>
             <p className="mb-3 d-none d-md-block user-card__body__info__description montserrat">
               {this.props.description}
             </p>

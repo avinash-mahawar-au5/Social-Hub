@@ -22,15 +22,13 @@
   position: relative;
   height: 100vh;
   width: 600px;
-  background-image: url("../../assets/images/bg_profile_blur.png");
+  background-image: url("../../assets/images/bg_profile-blur.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: left;
   overflow-y: hidden;
   transition: 1s all;
-  
-  
-  
+  filter: brightness(100%);
 
   &__toggle {
     position: fixed;
@@ -105,6 +103,12 @@
       }
     }
   }
+}
+
+.likeStyle {
+  color:rgb(255, 0, 0);
+  font-weight: 1000;
+  font-size: large;
 }
 
 @media (max-width: 768px) {

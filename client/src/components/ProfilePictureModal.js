@@ -46,36 +46,6 @@ class ProfilePictureModal extends Component {
 
   uploadPicture() {
     const crop = this.cropper.current.cropper.getData();
-    // // console.log("crop", crop);
-
-    // this.props.changeImage(this.state.file, crop);
-
-    // const { file } = this.state;
-
-    // const uploadTask = storage.ref(`images/${file.name}`).put(file);
-    // uploadTask.onChange(
-    //   "state_changed",
-    //   (snapshot) => {
-    //     //progress function
-    //   },
-    //   (error) => {
-    //     //error function
-    //     console.log(error);
-    //   },
-    //   () => {
-    //     //complete function
-    //     storage
-    //       .ref("images")
-    //       .child(file.name)
-    //       .getDownloadURL()
-    //       .then((url) => {
-    //         console.log(url);
-    //         this.setState({
-    //           url: url,
-    //         });
-    //       });
-    //   }
-    // );
 
     this.props.changeImage(this.state.file, crop);
   }

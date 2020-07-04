@@ -109,9 +109,13 @@ class Home extends Component {
           </div>
           <div className="col-12 col-md-4 bg-white home__right d-flex flex-column justify-content-center">
             <div className="row justify-content-center">
-              <div className="col-6">
-                <img alt='Logo' src={Logo} className="mx-auto d-block img-fluid" />
-              </div>
+              <img
+                alt="Logo"
+                src={Logo}
+                className="mx-auto d-block img-fluid"
+              />
+              {/* <div className="col-6">
+              </div> */}
             </div>
             <div className="row pr-md-3">
               <div className="col-12 px-4">

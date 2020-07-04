@@ -96,7 +96,7 @@ class Post extends Component {
           )}
           <div
             onClick={this.handleLike}
-            className="d-inline-flex px-3 py-1 text-brand-secondary rounded-pill post__likes cursor-pointer"
+            className="d-inline-flex px-3 py-1 text-danger rounded-pill post__likes cursor-pointer"
           >
             <span>
               {this.props.likes}{" "}

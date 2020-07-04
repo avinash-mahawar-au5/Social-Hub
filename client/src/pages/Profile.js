@@ -124,7 +124,7 @@ class Profile extends Component {
                 <i className="fas fa-camera"></i>
               </span>
             </div>
-            <p className="text-center text-dark title mt-3">
+            <p className="text-center text-white title mt-3">
               {this.props.profile.username}
             </p>
             {this.props.profile.editingDescription ? (
@@ -170,11 +170,11 @@ class Profile extends Component {
               <div className="d-flex justify-content-between px-5">
                 <div>
                   <p className="text-primary font-weight-bolder mb-0 mt-3">
-                    {this.props.profile.posts} Posts
+                    {/* {this.props.profile.posts} Posts */}
                   </p>
                 </div>
                 <div>
-                  <p className="text-danger font-weight-bolder mb-0 mt-3">
+                  <p className=" likeStyle mb-0 mt-3">
                     {this.props.profile.likes} Likes
                   </p>
                 </div>
