@@ -170,7 +170,7 @@ class Profile extends Component {
               <div className="d-flex justify-content-between px-5">
                 <div>
                   <p className="text-primary font-weight-bolder mb-0 mt-3">
-                    {/* {this.props.profile.posts} Posts */}
+                    {this.props.profile.posts} Posts
                   </p>
                 </div>
                 <div>

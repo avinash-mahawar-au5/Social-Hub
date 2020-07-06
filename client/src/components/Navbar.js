@@ -12,7 +12,7 @@ class Navbar extends Component {
     return (
       <>
         {this.props.isVisible && (
-          <div className="navbar-cs bg-light d-flex flex-column justify-content-between">
+          <div className="navbar-cs  d-flex flex-column justify-content-between">
             <div className="d-flex flex-row flex-md-column">
               <Auth>
                 <NavLink

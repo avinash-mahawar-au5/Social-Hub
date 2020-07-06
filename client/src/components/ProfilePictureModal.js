@@ -47,7 +47,7 @@ class ProfilePictureModal extends Component {
   uploadPicture() {
     const crop = this.cropper.current.cropper.getData();
 
-    this.props.changeImage(this.state.file, crop);
+    this.props.changeImage(this.state.file,crop);
   }
 
   render() {

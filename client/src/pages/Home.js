@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AuthForm from "../components/AuthForm";
-import Logo from "../assets/images/logo.jpg";
+import Logo from "../assets/images/logo1.png";
+import Text from '../assets/images/EWN.png'
 import { connect } from "react-redux";
 import { toggleNavbar } from "../actions/app";
 import { Link } from "react-router-dom";
@@ -109,13 +110,22 @@ class Home extends Component {
           </div>
           <div className="col-12 col-md-4 bg-white home__right d-flex flex-column justify-content-center">
             <div className="row justify-content-center">
-              <img
-                alt="Logo"
-                src={Logo}
-                className="mx-auto d-block img-fluid"
-              />
-              {/* <div className="col-6">
-              </div> */}
+              <div className="col-6">
+                <img
+                  alt="Logo"
+                  src={Logo}
+                  className="mx-auto d-block img-fluid"
+                />
+              </div>
+            </div>
+            <div className="row justify-content-center my-4">
+              <div className="col-6">
+                <img
+                  alt="Logo"
+                  src={Text}
+                  className="mx-auto d-block img-fluid"
+                />
+              </div>
             </div>
             <div className="row pr-md-3">
               <div className="col-12 px-4">

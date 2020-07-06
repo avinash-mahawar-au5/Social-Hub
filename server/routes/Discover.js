@@ -10,7 +10,7 @@ router.get("/users", (req, res) => {
       return res.status(500).send("There were an error counting the users");
 
     // console.log(count);
-    const random = Math.floor(Math.random() * (count - 10));
+    const random = Math.floor(Math.random() * (count - 1));
     User.find({})
       .limit(10)
       .skip(random)
@@ -32,8 +32,8 @@ router.get("/users", (req, res) => {
 router.get("/posts", (req, res) => {
   Post.countDocuments().exec((err, count) => {
     if (err) return res.status(500).send("post Couldn't be counted");
-    console.log(count);
-    const random = Math.floor(Math.random() * (count - 10));
+
+    const random = Math.floor(Math.random() * (count - 1));
     Post.find({})
       .limit(10)
       .skip(random)

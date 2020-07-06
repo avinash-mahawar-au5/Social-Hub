@@ -11,12 +11,13 @@
 	right: 0px;
 	height: 75px;
 	flex-shrink: 0;
+	background-color: #160303c0,;
 
 	&__button {
 		width: 33%;
 		height: 75px;
 		cursor: pointer;
-		color: black;
+		color:white;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;

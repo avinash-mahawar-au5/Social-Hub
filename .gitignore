@@ -4,6 +4,7 @@
 /server/node_modules
 /server/config.js
 /server/Procfile
+/server/routes/public
 /node_modules
 
 /dist/css

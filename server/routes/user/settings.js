@@ -10,7 +10,10 @@ const fs = require("fs");
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, path.resolve(__dirname, "..", "public/images/avatars"));
+    callback(
+      null,
+      path.resolve(__dirname, "..", "..", "public/images/avatars")
+    );
   },
   filename: (req, file, callback) => {
     callback(null, `${req.user.username}.png`);
@@ -92,28 +95,9 @@ router.patch(
       }
     );
 
-    // const { body } = req;
-    // const image = body.image;
-    // User.findByIdAndUpdate(
-    //   _id,
-    //   { profilePic: image },
-    //   { new: true, useFindAndModify: false }
-    // )
-    //   .then((updatedUser) => {
-    //     res.status(200).json({
-    //       code: 200,
-    //       response: {
-    //         message: "Profile Pic updated Successfully",
-    //         path: `${updatedUser.profilePic}?hash=${shortId.generate()}`,
-    //         updatedUser,
-    //       },
-    //     });
-    //   })
-    //   .catch((e) => res.status(500).send("long Erroe", e));
-
     User.findByIdAndUpdate(
       _id,
-      { profilePic: `images/avatars/${req.file.filename}` },
+      { profilePic: `/images/avatars/${req.file.filename}` },
       { new: true, useFindAndModify: false }
     )
       .then((updatedUser) => {
