@@ -8,8 +8,6 @@ const router = express.Router();
 router.post("/sign-up", async (req, res) => {
   const { username, password } = req.body;
 
- 
-
   User.findOne({ username })
     .then((user) => {
       if (user)

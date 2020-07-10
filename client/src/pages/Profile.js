@@ -92,6 +92,7 @@ class Profile extends Component {
 
   render() {
     // console.log(this.props);
+
     return (
       // <div></div>
       <div className="d-flex flex-column flex-md-row profile w-100">
@@ -169,12 +170,12 @@ class Profile extends Component {
             <div className="d-flex flex-column justify-content-between h-100">
               <div className="d-flex justify-content-between px-5">
                 <div>
-                  <p className="text-primary font-weight-bolder mb-0 mt-3">
-                    {this.props.profile.posts} Posts
+                  <p className="font-weight-bolder mb-0 mt-3 text-white">
+                    {this.props.posts.length} Posts
                   </p>
                 </div>
                 <div>
-                  <p className=" likeStyle mb-0 mt-3">
+                  <p className=" likeStyle mb-0 mt-3 text-white">
                     {this.props.profile.likes} Likes
                   </p>
                 </div>

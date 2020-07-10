@@ -123,10 +123,13 @@ class Post extends Component {
   }
 }
 
-const stateToProps = (state) => ({
-  logged: state.app.logged.isLogged,
-  session: state.app.logged,
-});
+const stateToProps = (state) => (
+  // console.log("state", state),
+  {
+    logged: state.app.logged.isLogged,
+    session: state.app.logged,
+  }
+);
 
 const dispatchToProps = (dispatch) => ({
   deletePost: (data) => dispatch(deletePost(data)),
