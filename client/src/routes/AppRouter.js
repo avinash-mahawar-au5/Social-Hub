@@ -9,7 +9,6 @@ const NewPostModal = lazy(() => import("../components/NewPostModal"));
 const SettingsModal = lazy(() => import("../components/SettingsModal"));
 const Navbar = lazy(() => import("../components/Navbar"));
 class AppRouter extends Component {
-  
   render() {
     return (
       <BrowserRouter>
