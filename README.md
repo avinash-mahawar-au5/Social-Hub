@@ -1,6 +1,8 @@
    # MEET-AND-GREET
    
    Video Link https://drive.google.com/file/d/1gvAl_ISjF7wyKpyoAS3_djy9LzsONjdU/view?usp=sharing - 
+   
+   App live Link : https://meet-and-greet-social.herokuapp.com/
 
 
 #### MEET-AND-GREET
